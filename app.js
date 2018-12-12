@@ -43,32 +43,32 @@ app.use(cookieParser());
 
 // //校验token 
 app.use((req, res, next) => {
-  let token = req.query.token;
-  // console.log(req.route)
-  console.log(req.path)
- console.log('中间件失效')
-  if (req.path !== '/users/login') {
-    jwt.verify(token, secret, (err, decoded) => {
-      if (!err) {
-        console.log(err)
-        console.log(decoded)
-      } else {
-        // console.log(res.send)
-        // res.status(err.status || 500);
-        console.log(res)
-           fs.writeFile(path.join(__dirname, 'log') + 'req.txt', res.app, (err) => {
-              if(err) {
-                console.log(err)
-              } else {
-                console.log('写入成功')
-              }
-           })
+//   let token = req.query.token;
+//   // console.log(req.route)
+//   console.log(req.path)
+//  console.log('中间件失效')
+//   if (req.path !== '/users/login') {
+//     jwt.verify(token, secret, (err, decoded) => {
+//       if (!err) {
+//         console.log(err)
+//         console.log(decoded)
+//       } else {
+//         // console.log(res.send)
+//         // res.status(err.status || 500);
+//         console.log(res)
+//            fs.writeFile(path.join(__dirname, 'log') + 'req.txt', res.app, (err) => {
+//               if(err) {
+//                 console.log(err)
+//               } else {
+//                 console.log('写入成功')
+//               }
+//            })
   
-        res.code = 405;
-        res.token = 'token失效';
-      }
-    })
-  }
+//         res.code = 405;
+//         res.token = 'token失效';
+//       }
+//     })
+//   }
   next()
 
 })

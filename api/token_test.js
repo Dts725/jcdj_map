@@ -3,8 +3,6 @@ module.exports = function (req,res,next) {
 
     //     res.send('token验证成功')
     // }
-
-
         res.send({
             status : 200,
             msg : 'token'

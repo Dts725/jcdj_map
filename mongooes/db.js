@@ -13,9 +13,9 @@ const comments = mongooes.Schema({
         min: 18,
         index: true
     },
-    pass :{
-        type : String,
-        default : '0'
+    pass: {
+        type: String,
+        default: '0'
     },
     code: {
         type: Number,
@@ -46,14 +46,14 @@ const comments = mongooes.Schema({
 
 
 //登陆
-db.info = async function (data,token) {
+db.info = async function (data, token) {
 
-    let res =[]
+    let res = []
     let mtu = mongooes.model('test', comments)
     let info = new mtu({
         name: data.name,
         pass: data.pass,
-        token : token
+        token: token
 
     })
     info.eat = function () {
@@ -61,20 +61,20 @@ db.info = async function (data,token) {
     }
 
     // con.once('open', () => {
-  
-        await info.save((err, info) => {
 
-            if (err) return
-            info.eat()
-        })
+    await info.save((err, info) => {
 
-   res = await mtu.find({
-       token: token,
-   })
+        if (err) return
+        info.eat()
+    })
+
+    res = await mtu.find({
+        token: token,
+    })
 
 
-    
-  
+
+
     return res
 }
 
